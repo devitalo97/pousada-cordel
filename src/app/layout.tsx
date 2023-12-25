@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     default: 'Pousada Cordel - Itaúnas, Espírito Santo, Brasil',
   },
   description:
-    'I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms.',
+    'A Pousada Cordel, em Itaúnas, oferece uma experiência encantadora, com aconchego e decoração inspirada na cultura local. Localizada em meio às belezas naturais da região, convida os hóspedes a explorarem a vila e suas praias.',
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
