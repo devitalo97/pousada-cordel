@@ -18,12 +18,16 @@ function ThemeWatcher() {
   let { resolvedTheme, setTheme } = useTheme()
 
   useEffect(() => {
+    setTheme('light')
+  }, [])
+
+  useEffect(() => {
     let media = window.matchMedia('(prefers-color-scheme: dark)')
 
     function onMediaChange() {
       let systemTheme = media.matches ? 'dark' : 'light'
       if (resolvedTheme === systemTheme) {
-        setTheme('light')
+        setTheme('system')
       }
     }
 
