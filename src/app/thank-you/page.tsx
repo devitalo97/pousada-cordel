@@ -38,7 +38,7 @@ export default function ThankYou() {
             /> */}
         <SocialLink
           href="https://www.booking.com/Pulse-x8mH6V"
-          aria-label="Follow on Booking"
+          aria-label="Check on Booking"
           icon={BookingIcon}
         />
       </div>

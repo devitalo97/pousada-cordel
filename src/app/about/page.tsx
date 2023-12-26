@@ -1,17 +1,13 @@
 import { type Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import {
+  AirbnbIcon,
   BookingIcon,
-  GitHubIcon,
   InstagramIcon,
-  LinkedInIcon,
-  TwitterIcon,
 } from '@/components/SocialIcons'
-import portraitImage from '@/images/portrait.jpg'
 
 function SocialLink({
   className,
@@ -28,9 +24,9 @@ function SocialLink({
     <li className={clsx(className, 'flex')}>
       <Link
         href={href}
-        className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+        className="group flex text-sm font-medium text-zinc-800 transition hover:text-cordel dark:text-zinc-200 dark:hover:text-cordel"
       >
-        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-cordel" />
         <span className="ml-4">{children}</span>
       </Link>
     </li>
@@ -123,17 +119,19 @@ export default function About() {
             <SocialLink
               href="https://www.booking.com/Pulse-x8mH6V"
               className="mt-4"
-              aria-label="Follow on Booking"
+              aria-label="Check on Booking"
               icon={BookingIcon}
             >
               Reserve pelo booking.com
             </SocialLink>
-            {/* <SocialLink href="#" icon={GitHubIcon} className="mt-4">
-              Follow on GitHub
+            <SocialLink
+              className="mt-4"
+              href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737301"
+              aria-label="Check on Airbnb"
+              icon={AirbnbIcon}
+            >
+              Reserve pelo airbnb
             </SocialLink>
-            <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
-              Follow on LinkedIn
-            </SocialLink> */}
             <SocialLink
               href="mailto:pousadacordel@gmail.com"
               icon={MailIcon}

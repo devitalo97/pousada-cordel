@@ -1,8 +1,13 @@
+'use client'
 import Image, { StaticImageData, type ImageProps } from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { Container } from '@/components/Container'
-import { BookingIcon } from '@/components/SocialIcons'
+import {
+  AirbnbIcon,
+  BookingIcon,
+  InstagramIcon,
+} from '@/components/SocialIcons'
 import logoAirbnb from '@/images/logos/airbnb.svg'
 import logoFacebook from '@/images/logos/facebook.svg'
 import logoPlanetaria from '@/images/logos/planetaria.svg'
@@ -17,6 +22,8 @@ import image12 from '@/images/photos/image-12.jpg'
 import image13 from '@/images/photos/image-13.jpg'
 import image14 from '@/images/photos/image-14.webp'
 import image15 from '@/images/photos/image-15.webp'
+import { CheckIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import { Disclosure } from '@headlessui/react'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -77,105 +84,6 @@ function SocialLink({
   )
 }
 
-interface Role {
-  company: string
-  title: string
-  logo: ImageProps['src']
-  start: string | { label: string; dateTime: string }
-  end: string | { label: string; dateTime: string }
-}
-
-function Role({ role }: { role: Role }) {
-  let startLabel =
-    typeof role.start === 'string' ? role.start : role.start.label
-  let startDate =
-    typeof role.start === 'string' ? role.start : role.start.dateTime
-
-  let endLabel = typeof role.end === 'string' ? role.end : role.end.label
-  let endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
-
-  return (
-    <li className="flex gap-4">
-      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
-      </div>
-      <dl className="flex flex-auto flex-wrap gap-x-2">
-        <dt className="sr-only">Company</dt>
-        <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-          {role.company}
-        </dd>
-        <dt className="sr-only">Role</dt>
-        <dd className="text-xs text-zinc-500 dark:text-zinc-400">
-          {role.title}
-        </dd>
-        <dt className="sr-only">Date</dt>
-        <dd
-          className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-          aria-label={`${startLabel} until ${endLabel}`}
-        >
-          <time dateTime={startDate}>{startLabel}</time>{' '}
-          <span aria-hidden="true">—</span>{' '}
-          <time dateTime={endDate}>{endLabel}</time>
-        </dd>
-      </dl>
-    </li>
-  )
-}
-
-function Resume() {
-  let resume: Array<Role> = [
-    {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear().toString(),
-      },
-    },
-    {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
-    },
-    {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
-    },
-    {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
-    },
-  ]
-
-  return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefcaseIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Work</span>
-      </h2>
-      <ol className="mt-6 space-y-4">
-        {resume.map((role, roleIndex) => (
-          <Role key={roleIndex} role={role} />
-        ))}
-      </ol>
-      {/* <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button> */}
-    </div>
-  )
-}
-
 function Photos({ images }: { images: StaticImageData[] }) {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
@@ -203,54 +111,7 @@ function Photos({ images }: { images: StaticImageData[] }) {
   )
 }
 
-function Avatar({
-  large = false,
-  className,
-  source,
-  ...props
-}: Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href'> & {
-  large?: boolean
-  source?: string
-}) {
-  return (
-    <Link
-      href="/"
-      aria-label="Home"
-      className={clsx(className, 'pointer-events-auto')}
-      {...props}
-    >
-      <img
-        src={source}
-        alt=""
-        sizes={large ? '4rem' : '2.25rem'}
-        className={clsx(
-          'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
-          large ? 'h-16 w-16' : 'h-9 w-9',
-        )}
-        // priority
-      />
-    </Link>
-  )
-}
-const comments = [
-  {
-    date: '2023-12-15',
-    title: 'Bruna Almeida',
-    description:
-      'A Pousada cordel é muito bonito e recebe os hóspede muito bem.',
-    source:
-      'https://artfact-bucket.s3.us-east-2.amazonaws.com/public/WhatsApp+Image+2023-12-25+at+20.15.54.jpeg',
-  },
-  {
-    date: '2023-12-15',
-    title: 'Ítalo de souza',
-    description:
-      'A Pousada cordel é muito bonito e recebe os hóspede muito bem.',
-    source:
-      'https://artfact-bucket.s3.us-east-2.amazonaws.com/public/WhatsApp+Image+2023-12-25+at+20.14.23.jpeg',
-  },
-]
-export default async function Home() {
+export default function Home() {
   return (
     <>
       <Container className="mt-16">
@@ -259,25 +120,126 @@ export default async function Home() {
             Quarto Duplo
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            No banheiro privativo, você encontrará um chuveiro, vaso sanitário e
-            papel higiênico. A comodidade e praticidade desses elementos
-            proporcionam uma estadia confortável e conveniente. A vista do local
-            é complementada por uma varanda, oferecendo um espaço adicional para
-            relaxar e apreciar o ambiente ao redor. Além disso, a presença de
-            uma vista panorâmica contribui para uma experiência única durante
-            sua estadia. Os quartos são equipados com diversas comodidades, como
-            TV, roupa de cama, frigobar e TV de tela plana. A acessibilidade é
-            garantida, com andares superiores disponíveis apenas por escada.
-            Toalhas, tomada perto da cama e ar-condicionado são algumas das
-            facilidades adicionais, proporcionando um ambiente aconchegante e
-            adaptado às suas necessidades.
+            Dispondo de jardim e Wi-Fi gratuito em todas as áreas, a Pousada
+            Cordel de Itaúnas está localizada em Itaúnas. O hotel dispõe de
+            quartos família. Os quartos do hotel possuem varanda. Na Pousada
+            Cordel de Itaúnas, todos os quartos estão equipados com
+            ar-condicionado e banheiro privativo. A propriedade serve café da
+            manhã continental diariamente. O aeroporto mais próximo é o
+            Aeroporto Teixeira De Freitas, a 170 km da Pousada Cordel de
+            Itaúnas.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
+              href="https://www.instagram.com/pousadacordeldeitaunas?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=="
+              aria-label="Follow on Instagram"
+              icon={InstagramIcon}
+            />
+            <SocialLink
               href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737301"
-              aria-label="Follow on Booking"
+              aria-label="Check on Booking"
               icon={BookingIcon}
             />
+            <SocialLink
+              href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737301"
+              aria-label="Check on Booking"
+              icon={AirbnbIcon}
+            />
+          </div>
+
+          <div className="mx-auto mt-8 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-8 lg:mx-0 lg:flex lg:max-w-none">
+            <div className="p-4 sm:p-6 lg:flex-auto">
+              <Disclosure>
+                {({ open }) => (
+                  <>
+                    <Disclosure.Button className="flex w-full flex-1 items-center justify-between">
+                      <h3 className="text-2xl font-bold tracking-tight text-gray-900">
+                        Comodidades
+                      </h3>
+                      <ChevronRightIcon
+                        className={clsx(
+                          'h-6 w-6',
+                          open ? 'rotate-90 transform' : '',
+                        )}
+                      />
+                    </Disclosure.Button>
+                    <Disclosure.Panel className="text-gray-500">
+                      <div className="mt-10 flex items-center gap-x-4">
+                        <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
+                          Banheiro Privativo
+                        </h4>
+                        <div className="h-px flex-auto bg-gray-100" />
+                      </div>
+                      <ul
+                        role="list"
+                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+                      >
+                        {['Chuveiro', 'Vaso sanitário', 'Papel higiênico'].map(
+                          (feature) => (
+                            <li key={feature} className="flex gap-x-3">
+                              <CheckIcon
+                                className="h-6 w-5 flex-none text-indigo-600"
+                                aria-hidden="true"
+                              />
+                              {feature}
+                            </li>
+                          ),
+                        )}
+                      </ul>
+                      <div className="mt-10 flex items-center gap-x-4">
+                        <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
+                          Vista
+                        </h4>
+                        <div className="h-px flex-auto bg-gray-100" />
+                      </div>
+                      <ul
+                        role="list"
+                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+                      >
+                        {['Varanda'].map((feature) => (
+                          <li key={feature} className="flex gap-x-3">
+                            <CheckIcon
+                              className="h-6 w-5 flex-none text-indigo-600"
+                              aria-hidden="true"
+                            />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-10 flex items-center gap-x-4">
+                        <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
+                          Quarto
+                        </h4>
+                        <div className="h-px flex-auto bg-gray-100" />
+                      </div>
+                      <ul
+                        role="list"
+                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+                      >
+                        {[
+                          'TV',
+                          'Roupa de cama',
+                          'Frigobar',
+                          'TV de tela plana',
+                          'Toalhas',
+                          'Tomada perto da cama',
+                          'Ar-condicionado',
+                          'Andares superiores acessíveis somente por escada',
+                        ].map((feature) => (
+                          <li key={feature} className="flex gap-x-3">
+                            <CheckIcon
+                              className="h-6 w-5 flex-none text-indigo-600"
+                              aria-hidden="true"
+                            />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </Disclosure.Panel>
+                  </>
+                )}
+              </Disclosure>
+            </div>
           </div>
         </div>
       </Container>
@@ -288,25 +250,125 @@ export default async function Home() {
             Quarto Triplo
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            No banheiro privativo, você encontrará um chuveiro, vaso sanitário e
-            papel higiênico. A comodidade e praticidade desses elementos
-            proporcionam uma estadia confortável e conveniente. A vista do local
-            é complementada por uma varanda, oferecendo um espaço adicional para
-            relaxar e apreciar o ambiente ao redor. Além disso, a presença de
-            uma vista panorâmica contribui para uma experiência única durante
-            sua estadia. Os quartos são equipados com diversas comodidades, como
-            TV, roupa de cama, frigobar e TV de tela plana. A acessibilidade é
-            garantida, com andares superiores disponíveis apenas por escada.
-            Toalhas, tomada perto da cama e ar-condicionado são algumas das
-            facilidades adicionais, proporcionando um ambiente aconchegante e
-            adaptado às suas necessidades.
+            Dispondo de jardim e Wi-Fi gratuito em todas as áreas, a Pousada
+            Cordel de Itaúnas está localizada em Itaúnas. O hotel dispõe de
+            quartos família. Os quartos do hotel possuem varanda. Na Pousada
+            Cordel de Itaúnas, todos os quartos estão equipados com
+            ar-condicionado e banheiro privativo. A propriedade serve café da
+            manhã continental diariamente. O aeroporto mais próximo é o
+            Aeroporto Teixeira De Freitas, a 170 km da Pousada Cordel de
+            Itaúnas.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737302"
-              aria-label="Follow on Booking"
+              href="https://www.instagram.com/pousadacordeldeitaunas?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=="
+              aria-label="Follow on Instagram"
+              icon={InstagramIcon}
+            />
+            <SocialLink
+              href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737301"
+              aria-label="Check on Booking"
               icon={BookingIcon}
             />
+            <SocialLink
+              href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737301"
+              aria-label="Check on Booking"
+              icon={AirbnbIcon}
+            />
+          </div>
+          <div className="mx-auto mt-8 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-8 lg:mx-0 lg:flex lg:max-w-none">
+            <div className="p-4 sm:p-6 lg:flex-auto">
+              <Disclosure>
+                {({ open }) => (
+                  <>
+                    <Disclosure.Button className="flex w-full flex-1 items-center justify-between">
+                      <h3 className="text-2xl font-bold tracking-tight text-gray-900">
+                        Comodidades
+                      </h3>
+                      <ChevronRightIcon
+                        className={clsx(
+                          'h-6 w-6',
+                          open ? 'rotate-90 transform' : '',
+                        )}
+                      />
+                    </Disclosure.Button>
+                    <Disclosure.Panel className="text-gray-500">
+                      <div className="mt-10 flex items-center gap-x-4">
+                        <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
+                          Banheiro Privativo
+                        </h4>
+                        <div className="h-px flex-auto bg-gray-100" />
+                      </div>
+                      <ul
+                        role="list"
+                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+                      >
+                        {['Chuveiro', 'Vaso sanitário', 'Papel higiênico'].map(
+                          (feature) => (
+                            <li key={feature} className="flex gap-x-3">
+                              <CheckIcon
+                                className="h-6 w-5 flex-none text-indigo-600"
+                                aria-hidden="true"
+                              />
+                              {feature}
+                            </li>
+                          ),
+                        )}
+                      </ul>
+                      <div className="mt-10 flex items-center gap-x-4">
+                        <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
+                          Vista
+                        </h4>
+                        <div className="h-px flex-auto bg-gray-100" />
+                      </div>
+                      <ul
+                        role="list"
+                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+                      >
+                        {['Varanda'].map((feature) => (
+                          <li key={feature} className="flex gap-x-3">
+                            <CheckIcon
+                              className="h-6 w-5 flex-none text-indigo-600"
+                              aria-hidden="true"
+                            />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-10 flex items-center gap-x-4">
+                        <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
+                          Quarto
+                        </h4>
+                        <div className="h-px flex-auto bg-gray-100" />
+                      </div>
+                      <ul
+                        role="list"
+                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+                      >
+                        {[
+                          'TV',
+                          'Roupa de cama',
+                          'Frigobar',
+                          'TV de tela plana',
+                          'Toalhas',
+                          'Tomada perto da cama',
+                          'Ar-condicionado',
+                          'Andares superiores acessíveis somente por escada',
+                        ].map((feature) => (
+                          <li key={feature} className="flex gap-x-3">
+                            <CheckIcon
+                              className="h-6 w-5 flex-none text-indigo-600"
+                              aria-hidden="true"
+                            />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </Disclosure.Panel>
+                  </>
+                )}
+              </Disclosure>
+            </div>
           </div>
         </div>
       </Container>
