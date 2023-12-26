@@ -5,6 +5,7 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import {
+  BookingIcon,
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
@@ -49,8 +50,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export const metadata: Metadata = {
   title: 'About',
-  description:
-    'I’m Spencer Sharp. I live in New York City, where I design the future.',
+  description: 'Pousada Cordel. Itaúnas. Brasil',
 }
 
 export default function About() {
@@ -59,18 +59,24 @@ export default function About() {
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
           <div className="max-w-xs px-2.5 lg:max-w-none">
-            <Image
+            {/* <Image
               src={portraitImage}
               alt=""
               sizes="(min-width: 1024px) 32rem, 20rem"
               className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
-            />
+            /> */}
+            <video controls autoPlay style={{ width: '100%', height: '100%' }}>
+              <source
+                src="https://artfact-bucket.s3.us-east-2.amazonaws.com/public/video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            I’m Spencer Sharp. I live in New York City, where I design the
-            future.
+            Pousada Cordel. Itaúnas. Brasil.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
@@ -103,24 +109,37 @@ export default function About() {
         </div>
         <div className="lg:pl-20">
           <ul role="list">
-            <SocialLink href="#" icon={TwitterIcon}>
+            {/* <SocialLink href="#" icon={TwitterIcon}>
               Follow on Twitter
+            </SocialLink> */}
+            <SocialLink
+              href="https://www.instagram.com/pousadacordeldeitaunas?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=="
+              aria-label="Follow on Instagram"
+              className="mt-4"
+              icon={InstagramIcon}
+            >
+              Siga-nos no Instagram
             </SocialLink>
-            <SocialLink href="#" icon={InstagramIcon} className="mt-4">
-              Follow on Instagram
+            <SocialLink
+              href="https://www.booking.com/Pulse-x8mH6V"
+              className="mt-4"
+              aria-label="Follow on Booking"
+              icon={BookingIcon}
+            >
+              Reserve pelo booking.com
             </SocialLink>
-            <SocialLink href="#" icon={GitHubIcon} className="mt-4">
+            {/* <SocialLink href="#" icon={GitHubIcon} className="mt-4">
               Follow on GitHub
             </SocialLink>
             <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
               Follow on LinkedIn
-            </SocialLink>
+            </SocialLink> */}
             <SocialLink
-              href="mailto:spencer@planetaria.tech"
+              href="mailto:pousadacordel@gmail.com"
               icon={MailIcon}
-              className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
+              className="mt-4 border-t border-zinc-100 dark:border-zinc-700/40"
             >
-              spencer@planetaria.tech
+              pousadacordel@gmail.com
             </SocialLink>
           </ul>
         </div>
