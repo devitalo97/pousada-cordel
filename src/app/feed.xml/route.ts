@@ -10,13 +10,13 @@ export async function GET(req: Request) {
   }
 
   let author = {
-    name: 'Spencer Sharp',
-    email: 'spencer@planetaria.tech',
+    name: 'Beinus & Bold',
+    email: 'dev.italos.souza@gmail.com',
   }
 
   let feed = new Feed({
-    title: author.name,
-    description: 'Your blog description',
+    title: "Pousada Cordel",
+    description: "A Pousada Cordel, em Itaúnas, oferece uma experiência encantadora,com aconchego e decoração inspirada na cultura local. Localizada em meio às belezas naturais da região, convida os hóspedes a explorarem a vila e suas praias.",
     author,
     id: siteUrl,
     link: siteUrl,

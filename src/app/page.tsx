@@ -60,34 +60,6 @@ function BriefcaseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function Article({ article }: { article: ArticleWithSlug }) {
-  return (
-    <Card as="article">
-      <Card.Title href={`/articles/${article.slug}`}>
-        {article.title}
-      </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
-      </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
-    </Card>
-  )
-}
-
 function Comment({
   article,
   source,
@@ -101,7 +73,6 @@ function Comment({
         <Avatar
           className="z-50 block h-fit w-fit origin-left"
           source={source}
-          // style={{ transform: 'var(--avatar-image-transform)' }}
         />
         <Card.Title href={`#`}>{article.title}</Card.Title>
       </div>
