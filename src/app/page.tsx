@@ -150,9 +150,9 @@ function Newsletter() {
       </p>
       <div className="mt-6 flex">
         <input
-          type="tel"
-          placeholder="Insira seu telefone"
-          aria-label="tel number"
+          type="text"
+          placeholder="Insira sua mensagem"
+          aria-label="message to wtp"
           required
           className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10 sm:text-sm"
         />
@@ -321,7 +321,7 @@ function Avatar({
 }
 const comments = [
   {
-    date: '2022-09-05',
+    date: '2023-12-15',
     title: 'Bruna Almeida',
     description:
       'A Pousada cordel é muito bonito e recebe os hóspede muito bem.',
@@ -329,7 +329,7 @@ const comments = [
       'https://artfact-bucket.s3.us-east-2.amazonaws.com/public/WhatsApp+Image+2023-12-25+at+20.15.54.jpeg',
   },
   {
-    date: '2022-09-05',
+    date: '2023-12-15',
     title: 'Ítalo de souza',
     description:
       'A Pousada cordel é muito bonito e recebe os hóspede muito bem.',
