@@ -3,6 +3,9 @@ import { type Metadata } from 'next'
 import { Card } from '@/components/Card'
 import { Section } from '@/components/Section'
 import { SimpleLayout } from '@/components/SimpleLayout'
+import { InstagramIcon } from '@/components/SocialIcons'
+import clsx from 'clsx'
+import Link from 'next/link'
 
 function SpeakingSection({
   children,
@@ -49,6 +52,16 @@ export default function Speaking() {
     <SimpleLayout
       title="Eventos do buraco do tatu"
       intro="Fique por dentro do eventos que irão acontecer em Itaúnas nesse final de ano. O buraco do tatu apresenta uma line-up incrível e com muita musica boa. Do reggae ao forró."
+      subheader={
+        <SocialLink
+          href="https://www.instagram.com/buracodotatuitaunas?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=="
+          aria-label="Follow on Instagram"
+          className="mt-4"
+          icon={InstagramIcon}
+        >
+          Acompanhe no Instagram
+        </SocialLink>
+      }
     >
       <div className="space-y-20">
         <SpeakingSection title="Discotecagem">
@@ -78,5 +91,29 @@ export default function Speaking() {
         </SpeakingSection>
       </div>
     </SimpleLayout>
+  )
+}
+
+function SocialLink({
+  className,
+  href,
+  children,
+  icon: Icon,
+}: {
+  className?: string
+  href: string
+  icon: React.ComponentType<{ className?: string }>
+  children: React.ReactNode
+}) {
+  return (
+    <li className={clsx(className, 'flex')}>
+      <Link
+        href={href}
+        className="group flex text-sm font-medium text-zinc-800 transition hover:text-cordel dark:text-zinc-200 dark:hover:text-cordel"
+      >
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-cordel" />
+        <span className="ml-4">{children}</span>
+      </Link>
+    </li>
   )
 }
