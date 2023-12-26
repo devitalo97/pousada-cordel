@@ -2,3 +2,14 @@
 @import 'tailwindcss/components';
 @import './prism.css';
 @import 'tailwindcss/utilities';
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Para IE, Edge e Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE e Edge */
+  scrollbar-width: none;  /* Firefox */
+}

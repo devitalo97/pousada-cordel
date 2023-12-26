@@ -26,14 +26,14 @@ export default function ThankYou() {
           icon={InstagramIcon}
         />
         <SocialLink
-          href="https://www.booking.com/Pulse-x8mH6V"
-          aria-label="Check on Booking"
-          icon={BookingIcon}
-        />
-        <SocialLink
           href="https://www.airbnb.com"
           aria-label="Check on Airbnb"
           icon={AirbnbIcon}
+        />
+        <SocialLink
+          href="https://www.booking.com/Pulse-x8mH6V"
+          aria-label="Check on Booking"
+          icon={BookingIcon}
         />
       </div>
     </SimpleLayout>

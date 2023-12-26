@@ -19,6 +19,7 @@ import image14 from '@/images/photos/image-14.webp'
 import image15 from '@/images/photos/image-15.webp'
 import { Metadata } from 'next'
 import { SuitDisclosure } from '@/components/SuitDisclosute'
+import { ImageCarousel } from '@/components/ImageCarousel'
 
 export const metadata: Metadata = {
   title: 'Suítes',
@@ -35,33 +36,6 @@ function SocialLink({
     <Link className="group -m-1 p-1" {...props}>
       <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
     </Link>
-  )
-}
-
-function Photos({ images }: { images: StaticImageData[] }) {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
-
-  return (
-    <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {images.map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
-              rotations[imageIndex % rotations.length],
-            )}
-          >
-            <Image
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
   )
 }
 
@@ -90,14 +64,14 @@ export default async function Home() {
               icon={InstagramIcon}
             />
             <SocialLink
-              href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737301"
-              aria-label="Check on Booking"
-              icon={BookingIcon}
-            />
-            <SocialLink
               href="https://www.airbnb.com"
               aria-label="Check on Booking"
               icon={AirbnbIcon}
+            />
+            <SocialLink
+              href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737301"
+              aria-label="Check on Booking"
+              icon={BookingIcon}
             />
           </div>
 
@@ -108,7 +82,7 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Photos images={[image6, image7, image8, image9, image10]} />
+      <ImageCarousel medias={[image6, image7, image8, image9, image10]} />
       <Container className="mt-16">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
@@ -131,14 +105,14 @@ export default async function Home() {
               icon={InstagramIcon}
             />
             <SocialLink
-              href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737301"
-              aria-label="Check on Booking"
-              icon={BookingIcon}
-            />
-            <SocialLink
               href="https://www.airbnb.com"
               aria-label="Check on Booking"
               icon={AirbnbIcon}
+            />
+            <SocialLink
+              href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737301"
+              aria-label="Check on Booking"
+              icon={BookingIcon}
             />
           </div>
           <div className="mx-auto mt-8 max-w-2xl rounded-3xl ring-1 ring-gray-200 dark:ring-zinc-800 sm:mt-8 lg:mx-0 lg:flex lg:max-w-none">
@@ -148,7 +122,7 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Photos images={[image11, image12, image13, image14, image15]} />
+      <ImageCarousel medias={[image11, image12, image13, image14, image15]} />
     </>
   )
 }
