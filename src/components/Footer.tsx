@@ -29,7 +29,7 @@ export function Footer() {
               <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
                 <NavLink href="/about">Sobre</NavLink>
                 <NavLink href="/projects">Quartos</NavLink>
-                <NavLink href="/speaking">Comentários</NavLink>
+                <NavLink href="/speaking">Eventos</NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
                 &copy; {new Date().getFullYear()} Beinus & Bold. All rights
