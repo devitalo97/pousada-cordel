@@ -7,7 +7,7 @@ import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Pousada Cordel',
+    template: '%s - Pousada Cordel Itaúnas',
     default: 'Pousada Cordel - Itaúnas, Espírito Santo, Brasil',
   },
   description:

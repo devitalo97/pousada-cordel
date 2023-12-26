@@ -1,5 +1,4 @@
-'use client'
-import Image, { StaticImageData, type ImageProps } from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { Container } from '@/components/Container'
@@ -8,10 +7,6 @@ import {
   BookingIcon,
   InstagramIcon,
 } from '@/components/SocialIcons'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
 import image6 from '@/images/photos/image-6.jpg'
 import image7 from '@/images/photos/image-7.webp'
 import image8 from '@/images/photos/image-8.jpg'
@@ -22,53 +17,12 @@ import image12 from '@/images/photos/image-12.jpg'
 import image13 from '@/images/photos/image-13.jpg'
 import image14 from '@/images/photos/image-14.webp'
 import image15 from '@/images/photos/image-15.webp'
-import { CheckIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
-import { Disclosure } from '@headlessui/react'
+import { Metadata } from 'next'
+import { SuitDisclosure } from '@/components/SuitDisclosute'
 
-function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-      />
-      <path
-        d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6"
-        className="stroke-zinc-400 dark:stroke-zinc-500"
-      />
-    </svg>
-  )
-}
-
-function BriefcaseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M2.75 9.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-      />
-      <path
-        d="M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5"
-        className="stroke-zinc-400 dark:stroke-zinc-500"
-      />
-    </svg>
-  )
+export const metadata: Metadata = {
+  title: 'Suítes',
+  description: 'Confira em detalhes as opções para sua acomodação.',
 }
 
 function SocialLink({
@@ -111,7 +65,7 @@ function Photos({ images }: { images: StaticImageData[] }) {
   )
 }
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Container className="mt-16">
@@ -149,96 +103,7 @@ export default function Home() {
 
           <div className="mx-auto mt-8 max-w-2xl rounded-3xl ring-1 ring-gray-200 dark:ring-zinc-800 sm:mt-8 lg:mx-0 lg:flex lg:max-w-none">
             <div className="p-4 sm:p-6 lg:flex-auto">
-              <Disclosure>
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button className="flex w-full flex-1 items-center justify-between">
-                      <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                        Comodidades
-                      </h3>
-                      <ChevronRightIcon
-                        className={clsx(
-                          'h-6 w-6',
-                          open ? 'rotate-90 transform' : '',
-                        )}
-                      />
-                    </Disclosure.Button>
-                    <Disclosure.Panel className="text-gray-500">
-                      <div className="mt-10 flex items-center gap-x-4">
-                        <h4 className="flex-none text-sm font-semibold leading-6 text-cordel">
-                          Banheiro Privativo
-                        </h4>
-                        <div className="h-px flex-auto bg-gray-100 dark:bg-zinc-800" />
-                      </div>
-                      <ul
-                        role="list"
-                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:grid-cols-2 sm:gap-6"
-                      >
-                        {['Chuveiro', 'Vaso sanitário', 'Papel higiênico'].map(
-                          (feature) => (
-                            <li key={feature} className="flex gap-x-3">
-                              <CheckIcon
-                                className="h-6 w-5 flex-none text-cordel"
-                                aria-hidden="true"
-                              />
-                              {feature}
-                            </li>
-                          ),
-                        )}
-                      </ul>
-                      <div className="mt-10 flex items-center gap-x-4">
-                        <h4 className="flex-none text-sm font-semibold leading-6 text-cordel">
-                          Vista
-                        </h4>
-                        <div className="h-px flex-auto bg-gray-100 dark:bg-zinc-800" />
-                      </div>
-                      <ul
-                        role="list"
-                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:grid-cols-2 sm:gap-6"
-                      >
-                        {['Varanda'].map((feature) => (
-                          <li key={feature} className="flex gap-x-3">
-                            <CheckIcon
-                              className="h-6 w-5 flex-none text-cordel"
-                              aria-hidden="true"
-                            />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="mt-10 flex items-center gap-x-4">
-                        <h4 className="flex-none text-sm font-semibold leading-6 text-cordel">
-                          Quarto
-                        </h4>
-                        <div className="h-px flex-auto bg-gray-100 dark:bg-zinc-800" />
-                      </div>
-                      <ul
-                        role="list"
-                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:grid-cols-2 sm:gap-6"
-                      >
-                        {[
-                          'TV',
-                          'Roupa de cama',
-                          'Frigobar',
-                          'TV de tela plana',
-                          'Toalhas',
-                          'Tomada perto da cama',
-                          'Ar-condicionado',
-                          'Andares superiores acessíveis somente por escada',
-                        ].map((feature) => (
-                          <li key={feature} className="flex gap-x-3">
-                            <CheckIcon
-                              className="h-6 w-5 flex-none text-cordel"
-                              aria-hidden="true"
-                            />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </Disclosure.Panel>
-                  </>
-                )}
-              </Disclosure>
+              <SuitDisclosure />
             </div>
           </div>
         </div>
@@ -278,96 +143,7 @@ export default function Home() {
           </div>
           <div className="mx-auto mt-8 max-w-2xl rounded-3xl ring-1 ring-gray-200 dark:ring-zinc-800 sm:mt-8 lg:mx-0 lg:flex lg:max-w-none">
             <div className="p-4 sm:p-6 lg:flex-auto">
-              <Disclosure>
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button className="flex w-full flex-1 items-center justify-between">
-                      <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                        Comodidades
-                      </h3>
-                      <ChevronRightIcon
-                        className={clsx(
-                          'h-6 w-6',
-                          open ? 'rotate-90 transform' : '',
-                        )}
-                      />
-                    </Disclosure.Button>
-                    <Disclosure.Panel className="text-gray-500">
-                      <div className="mt-10 flex items-center gap-x-4">
-                        <h4 className="flex-none text-sm font-semibold leading-6 text-cordel">
-                          Banheiro Privativo
-                        </h4>
-                        <div className="dark: h-px flex-auto bg-gray-100 dark:bg-zinc-800" />
-                      </div>
-                      <ul
-                        role="list"
-                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:grid-cols-2 sm:gap-6"
-                      >
-                        {['Chuveiro', 'Vaso sanitário', 'Papel higiênico'].map(
-                          (feature) => (
-                            <li key={feature} className="flex gap-x-3">
-                              <CheckIcon
-                                className="h-6 w-5 flex-none text-cordel"
-                                aria-hidden="true"
-                              />
-                              {feature}
-                            </li>
-                          ),
-                        )}
-                      </ul>
-                      <div className="mt-10 flex items-center gap-x-4">
-                        <h4 className="flex-none text-sm font-semibold leading-6 text-cordel">
-                          Vista
-                        </h4>
-                        <div className="h-px flex-auto bg-gray-100 dark:bg-zinc-800" />
-                      </div>
-                      <ul
-                        role="list"
-                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:grid-cols-2 sm:gap-6"
-                      >
-                        {['Varanda'].map((feature) => (
-                          <li key={feature} className="flex gap-x-3">
-                            <CheckIcon
-                              className="h-6 w-5 flex-none text-cordel"
-                              aria-hidden="true"
-                            />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="mt-10 flex items-center gap-x-4">
-                        <h4 className="flex-none text-sm font-semibold leading-6 text-cordel">
-                          Quarto
-                        </h4>
-                        <div className="h-px flex-auto bg-gray-100 dark:bg-zinc-800" />
-                      </div>
-                      <ul
-                        role="list"
-                        className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:grid-cols-2 sm:gap-6"
-                      >
-                        {[
-                          'TV',
-                          'Roupa de cama',
-                          'Frigobar',
-                          'TV de tela plana',
-                          'Toalhas',
-                          'Tomada perto da cama',
-                          'Ar-condicionado',
-                          'Andares superiores acessíveis somente por escada',
-                        ].map((feature) => (
-                          <li key={feature} className="flex gap-x-3">
-                            <CheckIcon
-                              className="h-6 w-5 flex-none text-cordel"
-                              aria-hidden="true"
-                            />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </Disclosure.Panel>
-                  </>
-                )}
-              </Disclosure>
+              <SuitDisclosure />
             </div>
           </div>
         </div>
