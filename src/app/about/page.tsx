@@ -126,7 +126,7 @@ export default function About() {
             </SocialLink>
             <SocialLink
               className="mt-4"
-              href="https://www.booking.com/hotel/br/pousada-cordel-de-itaunas.pt-br.html?aid=1263239&label=PShare-Pulse-x8mH6V%401684200375&sid=1d74949a0df697056207e39cf23bf05b&dist=0&keep_landing=1&sb_price_type=total&type=total&#room_913737301"
+              href="https://www.airbnb.com"
               aria-label="Check on Airbnb"
               icon={AirbnbIcon}
             >

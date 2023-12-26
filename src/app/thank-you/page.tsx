@@ -2,7 +2,11 @@ import { type Metadata } from 'next'
 
 import { SimpleLayout } from '@/components/SimpleLayout'
 import Link from 'next/link'
-import { BookingIcon, InstagramIcon } from '@/components/SocialIcons'
+import {
+  AirbnbIcon,
+  BookingIcon,
+  InstagramIcon,
+} from '@/components/SocialIcons'
 
 export const metadata: Metadata = {
   title: 'Mensagem',
@@ -16,30 +20,20 @@ export default function ThankYou() {
       intro="Entraremos em contato o mais rápido possivel para te retornar. Fique avontade para conferir nossas redes sociais."
     >
       <div className="mt-6 flex gap-6">
-        {/* <SocialLink
-              href="https://twitter.com"
-              aria-label="Follow on Twitter"
-              icon={TwitterIcon}
-            /> */}
         <SocialLink
           href="https://www.instagram.com/pousadacordeldeitaunas?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=="
           aria-label="Follow on Instagram"
           icon={InstagramIcon}
         />
-        {/* <SocialLink
-              href="https://github.com"
-              aria-label="Follow on GitHub"
-              icon={GitHubIcon}
-            />
-            <SocialLink
-              href="https://linkedin.com"
-              aria-label="Follow on LinkedIn"
-              icon={LinkedInIcon}
-            /> */}
         <SocialLink
           href="https://www.booking.com/Pulse-x8mH6V"
           aria-label="Check on Booking"
           icon={BookingIcon}
+        />
+        <SocialLink
+          href="https://www.airbnb.com"
+          aria-label="Check on Airbnb"
+          icon={AirbnbIcon}
         />
       </div>
     </SimpleLayout>

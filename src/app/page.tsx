@@ -255,7 +255,7 @@ export default async function Home() {
               icon={BookingIcon}
             />
             <SocialLink
-              href="https://www.booking.com/Pulse-x8mH6V"
+              href="https://www.airbnb.com"
               aria-label="Check on Airbnb"
               icon={AirbnbIcon}
             />
