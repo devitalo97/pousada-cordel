@@ -49,7 +49,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 }
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: 'Sobre',
   description: 'Pousada Cordel. Itaúnas. Brasil',
 }
 
@@ -137,7 +137,7 @@ export default function About() {
             <SocialLink
               href="mailto:pousadacordel@gmail.com"
               icon={MailIcon}
-              className="mt-4 border-t border-zinc-100 dark:border-zinc-700/40"
+              className="mt-4 border-t border-zinc-100 pt-4 dark:border-zinc-700/40"
             >
               pousadacordel@gmail.com
             </SocialLink>
